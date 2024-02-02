@@ -4,7 +4,7 @@ from datetime import datetime
 
 class Post(models.Model):
     title = models.CharField(max_length = 100)
-    body = models.BinaryField(max_length = 16383)
+    body = models.CharField(max_length = 10000)
     date = models.DateTimeField(default = datetime.now, blank = True)
     user =  models.CharField(max_length = 80)
     username = models.CharField(max_length = 25)

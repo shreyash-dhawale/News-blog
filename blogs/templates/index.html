@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily News and Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://img.freepik.com/free-photo/worker-reading-news-with-tablet_1162-83.jpg?w=826&t=st=1699279220~exp=1699279820~hmac=4cdc7c4964e5944e409dc139087afd81e7b98392ce5dadb9111acb9f3adea32f");
+            background-size: cover;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            background-color: black;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 100px 0;
+            color: #fff; /* Changed text color to white */
+            align-items: center;
+        }
+
+        .container {
+            background-color: rgba(110, 108, 108, 0.7); /* Added opacity to the background */
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        .tagline {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #fa4444;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+            transition: background-color 0.3s; /* Added transition for button hover effect */
+        }
+
+        .btn:hover {
+            background-color: #ff0000;
+        }
+
+        /* Media query for responsiveness */
+        @media (max-width: 768px) {
+            .tagline {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+
+        <div style="font-size: 26px;">Daily News and Blogs</div>
+        <div>
+
+            {% if isAuthenticated %}
+
+                <a href="dashboard">Dashboard</a>
+                <a href="logout">Logout</a>
+                <a href="documentation">API Docs</a>
+            {% else %}
+                <a href="login">Login</a>
+                <a href="signup">Signup</a>
+                <a href="documentation">API Docs</a>
+            {% endif %}
+        </div>
+    </div>
+    <section class="container">
+        <div class="hero-section">
+            <h1 class="tagline"><i>Stay Informed with the</i></h1>
+            <h1 class="tagline"><i>Latest News & Blogs</i></h1>
+            <div class="btn-container">
+                {% if isAuthenticated %}
+                    <button class="btn"><a href="news" style="text-decoration: none;color: white;">Read News</a></button>
+                    <button class="btn"><a href="view-blogs" style="text-decoration: none;color: white;">Explore Blogs</a></button>
+                {% else %}
+                    <button class="btn"><a href="login" style="text-decoration: none;color: white;">Login To Explore</a></button>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+
+</body>
+{% if message %}
+   <script>
+       document.addEventListener("DOMContentLoaded", function() {
+           setTimeout(function() {
+               alert("Logged Out Successfully");
+           }, 500);
+       });
+   </script>
+    {% endif %}
+</html>

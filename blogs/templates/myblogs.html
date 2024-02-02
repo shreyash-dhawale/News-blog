@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Blog's</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f1f1f1;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.navbar {
+  background: #FB4849;
+  overflow: hidden;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #fff;
+  color: #FB4849;
+}
+
+.leftcolumn {
+  float: left;
+  width: 100%;
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.card a {
+  text-decoration: none;
+  color: black;
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card h5 {
+  color: #FB4849;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.card h4 {
+  font-style: italic;
+  color: #333;
+}
+.delete-icon {
+    font-size: 20px;
+    color: #FB4849;
+    cursor: pointer;
+    margin-left: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>My Blog's</h2>
+</div>
+
+<div class="navbar">
+  <a href="view-blogs">View All Blogs</a>
+  <a href="create-blog">Create Blogs</a>
+  <a href="my-blogs">My Blogs</a>
+  <a href="dashboard">Dashboard</a>
+  <a href="logout">Logout</a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+  {% if posts %}
+    {% for post in posts reversed %}
+    <div class="card">
+      <a href="post/{{post.id}}">
+        <h2>{{post.title}}</h2>
+        <h5>{{post.date}}</h5>
+        <p>{{post.body|truncatewords:20}}</p>
+        <h4><em>-Published by {{post.user}}</em></h4>
+        <a href="delete-blog/{{post.id}}" class="delete-icon">&#x1F5D1;</a>
+      </a>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p>No Blog's Found</p>
+  {% endif %}
+
+
+  </div>
+</div>
+
+</body>
+</html>

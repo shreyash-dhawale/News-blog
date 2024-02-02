@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily News and Blogs API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #444;
+        }
+        p {
+            color: #666;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            position: relative;
+        }
+        .copy-button {
+            /*position: absolute;*/
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .back{
+            position:absolute;
+            margin:20px;
+        }
+    </style>
+</head>
+<body>
+    <button class="back"><a href="/">Back</a></button>
+    <div class="container">
+        <h1>Daily News and Blogs API Documentation</h1>
+        <h2>Introduction</h2>
+        <p>Welcome to the Daily News and Blogs API documentation. This API provides access to news articles and blog posts. Users can view, create, update, and delete blogs using the provided endpoints.</p>
+        <h2>Authentication</h2>
+        <p>This API uses HTTP Basic Authentication for user authentication. To access the API endpoints, you need to provide your username and password in the following format: <br><code>https://username:password@api_url/endpoint</code></p>
+        <p><strong>For Testing Purpose use:</strong></p>
+        <p><strong>UserName = “admin”</strong></p>
+        <p><strong>Password = “password”</strong></p>
+        <h2>API Endpoints</h2>
+        <h3>1. Get Blogs List</h3>
+        <ul>
+            <li><strong>Method:</strong> GET</li>
+            <li><strong>Endpoint:</strong> /api/blogs/</li>
+        </ul>
+        <h4>Example using curl</h4>
+        <pre id="curl-example">
+curl -X GET https://admin:password@dailynewsblogs.pythonanywhere.com/api/blogs/
+        
+        </pre>
+        <button class="copy-button" onclick="copyToClipboard('curl-example')">Copy</button>
+        <p><strong>Description:</strong> This endpoint allows you to retrieve a list of existing blogs.</p>
+        <h3>2. Create a Blog</h3>
+        <ul>
+            <li><strong>Method:</strong> POST</li>
+            <li><strong>Endpoint:</strong> /api/blogs/create/</li>
+            <li><strong>Parameters:</strong></li>
+        </ul>
+        <p><strong>title (string):</strong> The title of the blog.</p>
+        <p><strong>body (string):</strong> The content of the blog.</p>
+        <h4>Example using curl</h4>
+        <pre id="curl-example2">
+curl -X POST https://admin:password@dailynewsblogs.pythonanywhere.com/api/blogs/create/ -d "title=Api Testing" -d "body=Api Endpoint Testing"
+        
+        </pre>
+        <button class="copy-button" onclick="copyToClipboard('curl-example2')">Copy</button>
+        <p><strong>Description:</strong> This endpoint allows you to create a new blog with the specified title and content.</p>
+        <h3>3. Update a Blog</h3>
+        <ul>
+            <li><strong>Method:</strong> PUT</li>
+            <li><strong>Endpoint:</strong> /api/blogs/update/&lt;blog_id&gt;/</li>
+            <li><strong>Parameters:</strong></li>
+        </ul>
+        <p><strong>title (string):</strong> The updated title of the blog.</p>
+        <p><strong>body (string):</strong> The updated content of the blog.</p>
+        <h4>Example using curl</h4>
+        <pre id="curl-example3">
+curl -X PUT https://admin:password@dailynewsblogs.pythonanywhere.com/api/blogs/update/8/ -d "title=Api Testing" -d "body=Checking Update Endpoint"
+        
+        </pre>
+        <button class="copy-button" onclick="copyToClipboard('curl-example3')">Copy</button>
+        <p><strong>Description:</strong> This endpoint allows you to update an existing blog by specifying the blog's ID and providing the updated title and content.</p>
+        <h3>4. Delete a Blog</h3>
+        <ul>
+            <li><strong>Method:</strong> DELETE</li>
+            <li><strong>Endpoint:</strong> /api/blogs/delete/&lt;blog_id&gt;/</li>
+        </ul>
+        <h4>Example using curl</h4>
+        <pre id="curl-example4">
+curl -X DELETE https://admin:password@dailynewsblogs.pythonanywhere.com/api/blogs/delete/8/
+        
+        </pre>
+        <button class="copy-button" onclick="copyToClipboard('curl-example4')">Copy</button>
+        <p><strong>Description:</strong> This endpoint allows you to delete an existing blog by specifying the blog's ID.</p>
+        <h2>Response</h2>
+        <p>The API returns JSON responses with appropriate status codes to indicate the success or failure of each request.</p>
+        <h2>Conclusion</h2>
+        <p>This API provides the functionality to interact with blogs, allowing you to retrieve, create, update, and delete blog posts. Use the provided endpoints as documented above to perform these actions.</p>
+        <p>If you encounter any issues or have questions, please contact our support team for assistance.</p>
+        <p>Thank you for using the Daily News and Blogs API!</p>
+    </div>
+    <script>
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('Copied to clipboard');
+        }
+    </script>
+</body>
+</html>

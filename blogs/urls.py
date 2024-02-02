@@ -1,0 +1,30 @@
+from django.urls import path
+from . import views
+from .views import BlogListAPIView,BlogCreateAPIView,BlogUpdateAPIView,BlogDeleteAPIView
+urlpatterns =[
+    path('',views.index,name="Landing Page"),
+    path('news',views.get_news,name="News"),
+    path('login',views.custom_login,name='Login'),
+    path('logout',views.logout),
+    path('signup',views.signup,name='Signup'),
+    path('verify_otp', views.verify_otp, name='verify_otp'),
+    path('register',views.register,name='register'),
+    path('after_login',views.login_check),
+    path('dashboard',views.dashboard),
+    path('view-blogs',views.allblogs),
+    path('create-blog',views.createblog),
+    path('create_blog',views.addblog),
+    path('post/<str:pk>', views.posts, name= "post"),
+    path('my-blogs',views.myblogs,name="my-blogs"),
+    path('delete-blog/<int:post_id>', views.delete_blog, name='delete_blog'),
+    path('Forgotpwd',views.forgotpwd,name='Forgot'),
+    path('verify_otp_forgot',views.verify_otp_forgot),
+    path('forgotpwd_verify',views.forgotpwd_verify,name='Forgotverify'),
+    path('changepwd',views.change_password),
+    path('api/blogs/', BlogListAPIView.as_view(), name='blog-list'),
+    path('api/blogs/create/', BlogCreateAPIView.as_view(), name='blog-create'),
+    path('api/blogs/update/<int:pk>/', BlogUpdateAPIView.as_view(), name='blog-update'),
+    path('api/blogs/delete/<int:pk>/', BlogDeleteAPIView.as_view(), name='blog-delete'),
+    path('documentation',views.documentation,name="Documentation"),
+    path('digipay',views.digipay,name="DigiPay"),
+]

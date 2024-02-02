@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 200px;
+        }
+
+        button {
+            background: #FB4849;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #FF0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create a Blog</h1>
+        <form method="post" action="/create_blog">
+            {% csrf_token %}
+            <input type="text" name="title" id ="title"placeholder="Title" required>
+            <textarea name="content" placeholder="Blog content" id ="content"required></textarea>
+            <input hidden value="{{username}}" name="username" id="username"required readonly>
+            <button type="submit">Create Blog</button>
+
+        </form>
+        <button><a style="text-decoration:none; color:white; display:flex; float:right;" href="view-blogs">Back</a></button>
+    </div>
+</body>
+</html>

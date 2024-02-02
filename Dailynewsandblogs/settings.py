@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4d$rlik7*5h7^7m536*k7=qt8pb34sidqs)ax7fo*5h21i@=lc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["dailynewsblogs.pythonanywhere.com"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
@@ -61,8 +61,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'vr7017366984@gmail.com'
-EMAIL_HOST_PASSWORD = 'alcomgceqneniyvu'
+EMAIL_HOST_USER = 'shreyashdhawale018@gmail.com'
+EMAIL_HOST_PASSWORD = 'xebyogtygezirkcr'
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
 SESSION_COOKIE_AGE = 7 * 24 * 60 * 60
@@ -101,11 +101,11 @@ WSGI_APPLICATION = 'Dailynewsandblogs.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dailynewsblogs$default',
-        'USER': 'dailynewsblogs',
-        'PASSWORD': 'Vansh@123',
-        'HOST': 'dailynewsblogs.mysql.pythonanywhere-services.com',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Blogs',
+        'USER': 'postgres',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
     }
 }
 
